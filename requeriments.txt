@@ -1,0 +1,6 @@
+pytest
+sklearn
+scipy
+pydicom
+pandas
+numpy
