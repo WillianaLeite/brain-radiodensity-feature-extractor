@@ -1,5 +1,5 @@
 pytest
-sklearn
+scikit-learn
 scipy
 pydicom
 pandas
