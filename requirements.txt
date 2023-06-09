@@ -4,3 +4,4 @@ scipy
 pydicom
 pandas
 numpy
+cv2
