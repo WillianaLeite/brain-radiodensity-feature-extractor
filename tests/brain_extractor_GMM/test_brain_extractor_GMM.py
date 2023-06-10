@@ -1,4 +1,4 @@
-from src.BrainExtractorGMM import BrainExtractorGMM
+from src import BrainExtractorGMM
 
 class TestGaussianMixtureModel():
 
