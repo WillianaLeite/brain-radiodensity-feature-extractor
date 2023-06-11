@@ -1,6 +1,3 @@
-# brain-radiodensity-feature-extractor
-Repository responsible for extracting radiodensity characteristics from a brain CT scan.
-
 # Brain Feature Extractor
 A simple library that extracts brain features from a Brain Tomography. The constructed features refer to the regions: 
 - cerebrospinal fluid;
