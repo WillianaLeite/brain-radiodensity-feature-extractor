@@ -5,3 +5,4 @@ pydicom
 pandas
 numpy
 opencv-python
+pyyaml
