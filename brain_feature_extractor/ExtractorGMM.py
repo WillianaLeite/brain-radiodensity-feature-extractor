@@ -3,7 +3,6 @@ from numpy import ndarray
 import pandas as pd
 import yaml
 from brain_feature_extractor.GaussianMixtureModel import GaussianMixtureModel
-from logging import Logger
 import os
 
 
@@ -19,16 +18,12 @@ class ExtractorGMM:
     :param pixel_level_feature: If true, the segmentation returns the brain region of each pixel (MGABTD-pixel extractor).
                                 If false returns the percentage of pixels in each brain region (MGABTD-percent).
     :type pixel_level_feature: bool
-
-    :param logger: The main logging.
-    :type logger: Logger
     """
     
-    def __init__(self, image: ndarray, pixel_level_feature: bool, logger: Logger):
+    def __init__(self, image: ndarray, pixel_level_feature: bool):
 
         self.image = image
         self.pixel_level_feature = pixel_level_feature
-        self.logger = logger
         self.read_config()
         self.fit()
 
@@ -70,11 +65,9 @@ class ExtractorGMM:
             
             calcification_threshold = config.get('CALCIFICATION').split('-')
             self.CALCIFICATION = list(range(int(calcification_threshold[0]), int(calcification_threshold[1]) + 1))
-            self.logger.info('Configuration variables read from configuration file')
 
         except:
 
-            self.logger.warning('There is something wrong with the configuration file, read default values')
             self.N_COMPONENTS_PER_CLASS = {0:2, 1:2, 2:3, 3:2, 4:2, 5:3, 6:4}
             self.N_ITER = 5
             self.NUMBER_REGIONS = 7

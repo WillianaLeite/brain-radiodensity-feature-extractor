@@ -3,7 +3,6 @@ import pandas as pd
 import cv2
 import pydicom
 import time
-import logging
 from brain_feature_extractor.ExtractorGMM import ExtractorGMM
 
 
@@ -26,9 +25,6 @@ class BrainFeatureExtractorGMM:
         self.percentage = percentage
         self.pixel_level_feature = pixel_level_feature
 
-        logging.basicConfig(filename = 'logs/main_logger.log', level = logging.DEBUG, format = '%(asctime)s:%(levelname)s:%(name)s:%(message)s', filemode='w')
-        self.logger = logging
-
     def _load_dcm(self, img_path: str):
 
         """
@@ -41,7 +37,6 @@ class BrainFeatureExtractorGMM:
         :rtype: np.array
         """
 
-        self.logger.info(f'Reading image from path: {img_path}')
         dcm = pydicom.read_file(img_path)
         rescale_intercept = int(dcm.data_element('RescaleIntercept').value)
         img = np.array(dcm.pixel_array, dtype=np.int16) + rescale_intercept
@@ -64,8 +59,6 @@ class BrainFeatureExtractorGMM:
         :return: Array with the radiodensities of the DICOM image without the skull region.
         :rtype: np.array
         """
-
-        self.logger.info('Extract brain from image CT')
 
         # Restrict the HU values to be between 0 and 255
         brain_image = np.where(src < inf_limit, 0, src)
@@ -101,7 +94,6 @@ class BrainFeatureExtractorGMM:
 
         """ Extract features of brain regions from a brain tomography DICOM file. """
 
-        self.logger.info('Start of feature extraction')
         brain_image = self._load_dcm(path)
         new_img = self._extract_brain(brain_image, inf_limit=0, sup_limit=120)
 
@@ -112,8 +104,8 @@ class BrainFeatureExtractorGMM:
 
         init_time = time.time()
         
-        left_extractor = ExtractorGMM(left_img, self.pixel_level_feature, self.logger)
-        right_extractor = ExtractorGMM(right_img, self.pixel_level_feature, self.logger)
+        left_extractor = ExtractorGMM(left_img, self.pixel_level_feature)
+        right_extractor = ExtractorGMM(right_img, self.pixel_level_feature)
 
         left_feat = left_extractor.segmentation()
         right_feat = right_extractor.segmentation()
@@ -124,5 +116,4 @@ class BrainFeatureExtractorGMM:
 
         features = left_feat + right_feat
 
-        self.logger.info(f'Finishing feature extraction into {round(final_time, 2)} seconds')
         return [round(feat, 6) for feat in features]
