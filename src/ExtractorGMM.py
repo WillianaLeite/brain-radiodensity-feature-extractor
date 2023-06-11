@@ -73,7 +73,7 @@ class ExtractorGMM:
             self.logger.info('Configuration variables read from configuration file')
 
         except:
-            
+
             self.logger.warning('There is something wrong with the configuration file, read default values')
             self.N_COMPONENTS_PER_CLASS = {0:2, 1:2, 2:3, 3:2, 4:2, 5:3, 6:4}
             self.N_ITER = 5
@@ -92,7 +92,7 @@ class ExtractorGMM:
         """ Training a GMM for classification using brain radiodensity regions as class. """
 
         list_rows = (
-            list(zip([0] * len(self.BACKGROUND), self.BACKGROUND)) + 
+            list(zip([0] * len(self.BACKGROUND), self.BACKGROUND)) +
             list(zip([1] * len(self.CEREBROSPINAL_FLUID), self.CEREBROSPINAL_FLUID)) +
             list(zip([2] * len(self.STROKE_ISCHEMIC), self.STROKE_ISCHEMIC)) +
             list(zip([3] * len(self.WHITE_MATTER), self.WHITE_MATTER)) +

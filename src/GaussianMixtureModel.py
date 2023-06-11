@@ -17,7 +17,7 @@ class GaussianMixtureModel:
     """
 
     def __init__(self, n_components_per_class: dict, n_iter: int = 2):
-        self.n_components_per_class = n_components_per_class 
+        self.n_components_per_class = n_components_per_class
         self.n_iter = n_iter
 
     def fit(self, X_train: pd.DataFrame, y_train: pd.Series, verbose: bool = False):
@@ -40,7 +40,7 @@ class GaussianMixtureModel:
                 n_components = k, 
                 init_params = 'kmeans', 
                 covariance_type = 'full', 
-                n_init = self.n_iter, 
+                n_init = self.n_iter,
                 random_state = 42
             ) 
 
