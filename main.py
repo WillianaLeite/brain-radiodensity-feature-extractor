@@ -1,8 +1,7 @@
-from src.BrainExtractorGMM import *
+from brain_feature_extractor import BrainFeatureExtractorGMM
 
-def main():
+# Instancing the MGABTD-percent extractor
+extractor = BrainFeatureExtractorGMM(percentage=0.3, pixel_level_feature=False)
 
-    x = BrainExtractorGMM(0.3, False)
-    print(x.extract_features('sample/image157_isquemico.dcm', True))
-
-main()
+# Extracting features from the image
+print(extractor.extract_features(path='sample/image157_isquemico.dcm', verbose=True))

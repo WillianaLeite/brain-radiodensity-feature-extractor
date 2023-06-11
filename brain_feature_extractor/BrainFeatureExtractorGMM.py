@@ -4,10 +4,10 @@ import cv2
 import pydicom
 import time
 import logging
-from src.ExtractorGMM import ExtractorGMM
+from brain_feature_extractor.ExtractorGMM import ExtractorGMM
 
 
-class BrainExtractorGMM:
+class BrainFeatureExtractorGMM:
 
     """
     The instance extracts features related to brain regions from an entire brain scan.

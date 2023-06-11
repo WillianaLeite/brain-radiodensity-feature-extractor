@@ -2,7 +2,7 @@ import numpy as np
 from numpy import ndarray
 import pandas as pd
 import yaml
-from src.GaussianMixtureModel import GaussianMixtureModel
+from brain_feature_extractor.GaussianMixtureModel import GaussianMixtureModel
 from logging import Logger
 import os
 
