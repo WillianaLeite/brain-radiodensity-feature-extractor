@@ -1,7 +1,7 @@
 # Brain Feature Extractor
 A simple library that extracts brain features from a Brain Tomography. The constructed features refer to the regions: 
 - cerebrospinal fluid;
-- clacification;
+- calcification;
 - gray matter;
 - white matter;
 - ischemic stroke;
