@@ -26,3 +26,4 @@ extractor = BrainFeatureExtractorGMM(percentage=0.3, pixel_level_feature=False)
 # Extracting features from the image
 print(extractor.extract_features(path='sample/image157_isquemico.dcm', verbose=True))
 ```
+Link for more details: https://brain-radiodensity-feature-extractor.readthedocs.io/en/latest/source/api/BrainFeatureExtractorGMM.html
